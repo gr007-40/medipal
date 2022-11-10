@@ -1,16 +1,13 @@
-import Image from 'mui-image';
 import { makeStyles } from '@mui/styles';
 import Box from '@mui/material/Box'
 import styles from '../styles/Home.module.css';
 import {Typography} from "@mui/material";
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import { Container } from '@mui/material';
 import CardContent from '@mui/material/CardContent';
 import { Grid } from '@mui/material';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
-import { borders } from '@mui/system';
+
 const useStyles = makeStyles((theme) => ({
     appBar: {
       backgroundColor: "#fff"
