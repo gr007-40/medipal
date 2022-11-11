@@ -6,82 +6,82 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import { DataGrid } from "@mui/x-data-grid";
 import { postData } from "../../utils";
 
-export async function getServerSideProps() {
-  const doctor = await postData(
-      "http://localhost:3000/api/doctor",
-    {}
-  ).then((doctor) => {
-    console.log(doctor);
-    return doctor;
-  });
-  return { props: {doctor} };
-}
+// export async function getServerSideProps() {
+//   const doctor = await postData(
+//       "http://localhost:3000/api/doctor",
+//     {}
+//   ).then((doctor) => {
+//     console.log(doctor);
+//     return doctor;
+//   });
+//   return { props: {doctor} };
+// }
 
-export default function Doctor({ doctor }) {
-  // const doctor = {
-  // id: 12,
-  // name: 'Dr. Jonathon Max',
-  // specialization: 'Neorology',
-  // degrees: ['MBBS', 'FCPS (Surgery)', 'MS (Neurology)'],
-  // profilePicture:
-  //     'https://media.istockphoto.com/photos/doctor-picture-id519921016?k=20&m=519921016&s=612x612&w=0&h=ENVRgNdUKGhZxYNSdcVtFplLNGWvpqqXlrq_hhb0PMA=',
-  // socialMedia: {
-  //     facebook: 'https://facebook.com/jonathon.max',
-  //     linkedIn: 'https://linkedin.com/jonathon',
-  //     instagram: 'https://instagram.com/max',
-  // },
-  // schedule: [
-  //     {
-  //         id: 'Saturday',
-  //         hospital: 'ABC hospital',
-  //         room: 410,
-  //         from: '10:30',
-  //         to: '17:20',
-  //     },
-  //     {
-  //         id: 'Sunday',
-  //         hospital: 'ABC hospital',
-  //         room: 410,
-  //         from: '10:30',
-  //         to: '17:20',
-  //     },
-  //     {
-  //         id: 'Monday',
-  //         hospital: 'ABC hospital',
-  //         room: 410,
-  //         from: '10:30',
-  //         to: '17:20',
-  //     },
-  //     {
-  //         id: 'Tuesday',
-  //         hospital: 'ABC hospital',
-  //         room: 410,
-  //         from: '10:30',
-  //         to: '17:20',
-  //     },
-  //     {
-  //         id: 'Wednesday',
-  //         hospital: 'ABC hospital',
-  //         room: 410,
-  //         from: '10:30',
-  //         to: '17:20',
-  //     },
-  //     {
-  //         id: 'Thursday',
-  //         hospital: 'ABC hospital',
-  //         room: 410,
-  //         from: '10:30',
-  //         to: '17:20',
-  //     },
-  //     {
-  //         id: 'Friday',
-  //         hospital: 'ABC hospital',
-  //         room: 410,
-  //         from: '10:30',
-  //         to: '17:20',
-  //     },
-  // ],
-  // };
+export default function Doctor({/* doctor */}) {
+  const doctor = {
+  id: 12,
+  name: 'Dr. Jonathon Max',
+  specialization: 'Neorology',
+  degrees: ['MBBS', 'FCPS (Surgery)', 'MS (Neurology)'],
+  profilePicture:
+      'https://media.istockphoto.com/photos/doctor-picture-id519921016?k=20&m=519921016&s=612x612&w=0&h=ENVRgNdUKGhZxYNSdcVtFplLNGWvpqqXlrq_hhb0PMA=',
+  socialMedia: {
+      facebook: 'https://facebook.com/jonathon.max',
+      linkedIn: 'https://linkedin.com/jonathon',
+      instagram: 'https://instagram.com/max',
+  },
+  schedule: [
+      {
+          id: 'Saturday',
+          hospital: 'ABC hospital',
+          room: 410,
+          from: '10:30',
+          to: '17:20',
+      },
+      {
+          id: 'Sunday',
+          hospital: 'ABC hospital',
+          room: 410,
+          from: '10:30',
+          to: '17:20',
+      },
+      {
+          id: 'Monday',
+          hospital: 'ABC hospital',
+          room: 410,
+          from: '10:30',
+          to: '17:20',
+      },
+      {
+          id: 'Tuesday',
+          hospital: 'ABC hospital',
+          room: 410,
+          from: '10:30',
+          to: '17:20',
+      },
+      {
+          id: 'Wednesday',
+          hospital: 'ABC hospital',
+          room: 410,
+          from: '10:30',
+          to: '17:20',
+      },
+      {
+          id: 'Thursday',
+          hospital: 'ABC hospital',
+          room: 410,
+          from: '10:30',
+          to: '17:20',
+      },
+      {
+          id: 'Friday',
+          hospital: 'ABC hospital',
+          room: 410,
+          from: '10:30',
+          to: '17:20',
+      },
+  ],
+  };
   const columns = [
     {
       field: "id",
@@ -145,8 +145,8 @@ export default function Doctor({ doctor }) {
           <CardContent align="center" sx={{ background: "#BFD2F8" }}>
             <h2>{doctor.name}</h2>
             <h3>{doctor.specialization}</h3>
-            {/*<h4>{doctor.degrees.join(' | ')}</h4>*/}
-            {/*<Box sx={{ display: "flex", flexDirection: "row" }}>
+            <h4>{doctor.degrees.join(' | ')}</h4>
+            <Box sx={{ display: "flex", flexDirection: "row" }}>
               <Box align="left" sx={{ mt: 1, flexGrow: 1 }}>
                 <Link type="link" href={doctor.socialMedia.linkedIn}>
                   <LinkedInIcon />
@@ -158,7 +158,7 @@ export default function Doctor({ doctor }) {
                   <InstagramIcon />
                 </Link>
               </Box>
-          </Box>*/}
+          </Box>
           </CardContent>
         </Card>
         <Box
