@@ -17,7 +17,7 @@ const profile = () => {
   }
   const patient = {
     id: 12,
-    name: "Kafi Rifat",
+    name: "Kafi Hasan",
     age: 22,
     gender: "Male",
     blood: "B+",
