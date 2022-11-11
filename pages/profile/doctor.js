@@ -24,7 +24,7 @@ export default function Doctor({/* doctor */}) {
   specialization: 'Neorology',
   degrees: ['MBBS', 'FCPS (Surgery)', 'MS (Neurology)'],
   profilePicture:
-      'https://media.istockphoto.com/photos/doctor-picture-id519921016?k=20&m=519921016&s=612x612&w=0&h=ENVRgNdUKGhZxYNSdcVtFplLNGWvpqqXlrq_hhb0PMA=',
+      '/am.jpg',
   socialMedia: {
       facebook: 'https://facebook.com/jonathon.max',
       linkedIn: 'https://linkedin.com/jonathon',

@@ -87,7 +87,7 @@ export default function About() {
           <Box sx={{ display: 'flex', justifyContent: 'center' }}>
           
       <Box sx={{ ...commonStyles,border:0 ,backgroundColor: '#AEC6CF',}}>
-      <img src="/A.jpg" width="100%" height="62%"></img>
+      <img src="/m.jpg" width="100%" height="62%"></img>
       <Typography variant={'h8'} align={'center'} sx={{color:'#000080',fontFamily: 'Raleway'}} paragraph  gutterBottom>OUR MISSION </Typography>
       <Typography variant={'h8'} align={'center'} sx={{color:'#000000',fontFamily: 'Raleway'}} paragraph  gutterBottom >To enable quality, affordable healthcare for everyone, everywhere.</Typography>
         </Box> 
