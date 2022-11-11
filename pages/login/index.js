@@ -16,7 +16,7 @@ import Typography from "@mui/material/Typography";
 import { postData } from "../../utils";
 
 export default function logIn() {
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const user_credentials = {
@@ -24,26 +24,27 @@ export default function logIn() {
       password: data.get("password"),
     };
 
-    postData("/api/login", user_credentials).then((session) => {
-      console.log(session);
-        if (session.success) {
-        console.log('login successfull');
-            postData("/api/verify", {}).then((user) => {
-                if (user.isVerified) {
-                    console.log('user verified');
-                    if (user.isDoctor) {
-                        Router.push('/profile/doctor');
-                    } else {
-                        Router.push('profile/patient');
-                    }
-                } else {
-                    console.log('user not verified');
-                }
-            });
-        } else {
-            console.log('login failed');
-        }
+    const session = await postData("/api/login", user_credentials).then((session) => {
+      return session;
     });
+    if (await session.success) {
+      console.log("login successfull");
+      postData("/api/verify", {}).then((user) => {
+        console.log(user);
+        if (user.isVerified) {
+          console.log("user verified");
+          if (user.isDoctor) {
+            Router.push("/profile/doctor");
+          } else {
+            Router.push("profile/patient");
+          }
+        } else {
+          console.log("user not verified");
+        }
+      });
+    } else {
+      console.log("login failed");
+    }
   };
 
   return (
