@@ -24,7 +24,11 @@ export default function logIn() {
             password: data.get('password'),
         };
 
-        const session = await postData('/api/login', user_credentials);
+        const session = await postData('/api/login', user_credentials).then(
+            (session) => {
+                return session;
+            }
+        );
         if (await session.success) {
             console.log('login successfull');
             postData('/api/verify', {}).then((user) => {
