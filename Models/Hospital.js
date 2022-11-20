@@ -3,7 +3,7 @@ import DataTypes from "sequelize";
 
 sequelize.sync();
 
-const Hospital = sequelize.define("Hospital",{
+const Hospital = sequelize.define("Hospital", {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,

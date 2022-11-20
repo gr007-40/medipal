@@ -1,6 +1,6 @@
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import { Button } from '@mui/material';
+import {Button} from '@mui/material';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
@@ -26,9 +26,9 @@ export default function book() {
             <Grid
                 container
                 component='main'
-                sx={{ height: '100vh' }}
+                sx={{height: '100vh'}}
             >
-                <CssBaseline />
+                <CssBaseline/>
                 <Grid
                     item
                     xs={false}
@@ -71,7 +71,7 @@ export default function book() {
                         <Typography
                             component='h1'
                             variant='h5'
-                            sx={{ fontWeight: 'bold' }}
+                            sx={{fontWeight: 'bold'}}
                         >
                             BOOK AN APPOINTMENT
                         </Typography>
@@ -79,7 +79,7 @@ export default function book() {
                             component='form'
                             noValidate
                             onSubmit={handleSubmit}
-                            sx={{ mt: 1 }}
+                            sx={{mt: 1}}
                         >
                             <TextField
                                 margin='normal'
@@ -119,7 +119,7 @@ export default function book() {
                                 label='Date'
                                 //name="date"
                                 type='date'
-                                sx={{ width: 220 }}
+                                sx={{width: 220}}
                                 InputLabelProps={{
                                     shrink: true,
                                 }}
@@ -129,7 +129,7 @@ export default function book() {
                                 type='submit'
                                 fullWidth
                                 variant='contained'
-                                sx={{ mt: 3, mb: 2 }}
+                                sx={{mt: 3, mb: 2}}
                             >
                                 Confirm appointment
                             </Button>

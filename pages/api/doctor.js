@@ -1,46 +1,41 @@
-import Doctor from "../../Models/Doctor";
-import User from "../../Models/User";
-import Schedule from "../../Models/Schedule";
-import { postData } from "../../utils";
-import { getCookie } from "cookies-next";
+import Doctor from '../../Models/Doctor';
+import Degree from '../../Models/Degree'
+import Schedule from '../../Models/Schedule';
 
 export default async function handler(req, res) {
-  const jwt = getCookie("token", { req, res });
-  console.log(jwt);
-  const id = await postData("http://localhost:3000/api/verify", {
-    token: jwt,
-  }).then((user) => {
-    console.log(user);
-    if (user.isVerified && user.isDoctor) {
-      return user.id;
-    } else {
-      return;
-    }
-  });
-  console.log(await id);
-  const user = await User.findByPk(await id).then((user) => {
-    console.log(user.dataValues);
-    return user.dataValues;
-  });
-  const doctor = await Doctor.findOne({
-    where: { userID: await user.id },
-  }).then((doctor) => {
-    console.log(doctor.dataValues);
-    return doctor.dataValues;
-  });
-  const schedule = await Schedule.findAll({
-    where: { doctorID: await doctor.id },
-  }).then((schedules) => {
-    console.log(schedules.dataValues);
-    return schedules;
-  });
-  console.log(await schedule);
-  res.status(200).json({
-    id: await doctor.id,
-    name: await doctor.name,
-    specialization: await doctor.specialization,
-    profilePicture: await doctor.profilePicture,
-    schedule: await schedule,
-  });
-  return;
+    const uid = req.body.id;
+    const doctor = await Doctor.findOne({
+        where: {userID: uid},
+    }).then((doctor) => {
+        return doctor.dataValues;
+    }).catch((error) => {
+        console.error(error);
+        res.status(405).json({message: "invalid doctor id"});
+
+    });
+    const schedule = await Schedule.findAll({
+        where: {doctorID: await doctor.id},
+    }).then((schedules) => {
+        const arr = [];
+        schedules.forEach((i) => {
+            arr.push(i.dataValues);
+        });
+        return arr;
+    });
+    const degree = await Degree.findAll({where: {doctorID: await doctor.id}}).then((degrees) => {
+        const arr = [];
+        degrees.forEach((i) => {
+            arr.push(i.dataValues);
+        });
+        return arr;
+    });
+    res.status(200).json({
+        id: await doctor.id,
+        name: await doctor.name,
+        specialization: await doctor.specialization,
+        profilePicture: await doctor.profilePicture,
+        degrees: degree,
+        schedule: schedule,
+    });
+
 }

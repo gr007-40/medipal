@@ -1,29 +1,27 @@
 import DataTypes from 'sequelize';
 import {sequelize} from '.';
-import User from "./User";
+import Doctor from './Doctor'
 
-sequelize.sync();
+sequelize.sync()
 
-const Doctor = sequelize.define('Doctor', {
+const Degree = sequelize.define('Degree', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
     },
-    name: DataTypes.STRING,
-    specialization: DataTypes.STRING,
-    profilePicture: DataTypes.STRING,
-    userID: {
+    value: DataTypes.STRING,
+    doctorID: {
         type: DataTypes.INTEGER,
         foreignKey: {
             reference: {
                 key: 'id',
-                model: User
+                model: Doctor,
             },
-            allowNull: false,
+            allowNull: true,
             onDelete: 'CASCADE',
         }
     }
 });
 
-export default Doctor;
+export default Degree;

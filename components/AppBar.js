@@ -1,12 +1,8 @@
-import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import Avatar from '@mui/material/Avatar';
 import Link from './Link';
-import {postData} from '../utils';
-import {IconButton} from '@mui/material';
 
 const MEDIPAL = () => {
     return (
@@ -16,12 +12,6 @@ const MEDIPAL = () => {
                 display: {xs: 'none', md: 'flex'},
             }}
         >
-            {/* <Icon>
-                    <Avatar
-                        alt='MEDIPAl'
-                        src='/doo.svg'
-                    />
-                </Icon> */}
             <Link
                 Type={'button'}
                 type='button'

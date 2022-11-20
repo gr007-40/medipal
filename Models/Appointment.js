@@ -1,5 +1,5 @@
 import DataTypes from 'sequelize';
-import { sequelize } from '.';
+import {sequelize} from '.';
 import Doctor from "./Doctor";
 import Hospital from "./Hospital";
 import User from "./User";
@@ -13,7 +13,7 @@ const Appointment = sequelize.define('Appointment', {
         autoIncrement: true,
     },
     day: DataTypes.STRING,
-    hospitalID:{
+    hospitalID: {
         foreignKey: {
             type: DataTypes.INTEGER,
             reference: {
@@ -24,7 +24,7 @@ const Appointment = sequelize.define('Appointment', {
             onDelete: 'NO ACTION'
         }
     },
-    doctorID:{
+    doctorID: {
         foreignKey: {
             type: DataTypes.INTEGER,
             reference: {
@@ -35,10 +35,10 @@ const Appointment = sequelize.define('Appointment', {
             onDelete: 'NO ACTION',
         }
     },
-    userID:{
+    userID: {
         type: DataTypes.INTEGER,
-        foreignKey:{
-            reference:{
+        foreignKey: {
+            reference: {
                 key: 'id',
                 model: User
             },

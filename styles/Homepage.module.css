@@ -1,88 +1,88 @@
-.im1
-{
-  display: flex;
-  width : 100%;
+.im1 {
+    display: flex;
+    width: 100%;
 
-  height : 400;
-  transform : translate(0%,-0.9%);
-  overflow : hidden;
+    height: 400px;
+    transform: translate(0%, -0.9%);
+    overflow: hidden;
 }
-.is
-{
-  display: flex;
-  width : 100%;
 
-  height : 100%;
-  transform : translate(0%,0%);
-  overflow : hidden;
+.is {
+    display: flex;
+    width: 100%;
+
+    height: 100%;
+    transform: translate(0%, 0%);
+    overflow: hidden;
 }
-.im2
-{
 
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
-  font-size: 20px;
-  COLOR : skyblue;
-  text-align: center;
- 
+.im2 {
 
-}
-.im6
-{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    COLOR: skyblue;
+    text-align: center;
 
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
-  font-size: 16px;
-  COLOR : skyblue;
- transform : translate(44%,540%);
 
 }
-.im3
-{
 
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
-  font-size: 23px;
-  color:rgb(57, 57, 100);
-  text-align: center;
+.im6 {
 
-}
-.im7
-{
-
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
-  font-size: 23px;
-  color:rgb(57, 57, 100);
- transform : translate(44.5%,290%);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    COLOR: skyblue;
+    transform: translate(44%, 540%);
 
 }
-.im4
-{
 
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
-  font-size: 20px;
-  COLOR : skyblue;
- transform : translate(47%,350%);
+.im3 {
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 23px;
+    color: rgb(57, 57, 100);
+    text-align: center;
 
 }
-.im5
-{
-width : 70%;
 
-height : 10%;
-transform:translateX(15rem);
-overflow : hidden;
-}
-.im8
-{
-width : 25%;
+.im7 {
 
-height : 20%;
-transform : translate(245%,30%);
-overflow : hidden;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 23px;
+    color: rgb(57, 57, 100);
+    transform: translate(44.5%, 290%);
+
 }
+
+.im4 {
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    COLOR: skyblue;
+    transform: translate(47%, 350%);
+
+}
+
+.im5 {
+    width: 70%;
+
+    height: 10%;
+    transform: translateX(15rem);
+    overflow: hidden;
+}
+
+.im8 {
+    width: 25%;
+
+    height: 20%;
+    transform: translate(245%, 30%);
+    overflow: hidden;
+}
+
 /*.im10
 {
 
@@ -118,68 +118,66 @@ overflow : hidden;
 transform : translate(44%,-2040%);
 overflow : hidden;
 }*/
-.im15
-{
+.im15 {
 
-  width : 25%;
+    width: 25%;
 
-  height : 90%;
-  transform:translateX(59.5rem);
-  overflow : hidden;
+    height: 90%;
+    transform: translateX(59.5rem);
+    overflow: hidden;
 }
+
 .page-wrap {
-  width: 960px;
-  margin: 0 auto;
-  }
-
-.im19
-{
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
-  font-size: 15px;
-  COLOR : black;
-  text-align: center;
-}
-.im20
-{
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
-  font-size: 15px;
-  COLOR : black;
-  text-align: center;
-}
-.im21
-{
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
-  font-size: 15px;
-  COLOR : black;
-  transform:translate(16.5%,-1400%)
-  
+    width: 960px;
+    margin: 0 auto;
 }
 
-.im22
-{
-
-  width : 1%;
-
-  height : 4%;
-  transform:translate(-990%,-1640%);
-  overflow : hidden;
+.im19 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    COLOR: black;
+    text-align: center;
 }
-.siz
-{
-  /*border: 5px outset red;*/
-  background-color: white;  
-  height: 20rem;
-  
+
+.im20 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    COLOR: black;
+    text-align: center;
+}
+
+.im21 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    COLOR: black;
+    transform: translate(16.5%, -1400%)
 
 }
-.ss
-{
- 
-  background-color: white;  
-  height: 15rem;
-  
+
+.im22 {
+
+    width: 1%;
+
+    height: 4%;
+    transform: translate(-990%, -1640%);
+    overflow: hidden;
+}
+
+.siz {
+    /*border: 5px outset red;*/
+    background-color: white;
+    height: 20rem;
+
+
+}
+
+.ss {
+
+    background-color: white;
+    height: 15rem;
+
 
 }

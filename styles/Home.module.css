@@ -1,105 +1,104 @@
 .container {
-  padding: 0 0rem;
-  top:04em;
-}
-.about
-{
-width : 100%;
-
-height : 400;
-transform : translate(0%,-0.9%);
-overflow : hidden;
+    padding: 0 0;
+    top: 04em;
 }
 
-.homepagetitle
-{
-  padding: 0 7rem;
-  color : navy;
-  
+.about {
+    width: 100%;
+
+    height: 400px;
+    transform: translate(0%, -0.9%);
+    overflow: hidden;
 }
-.h22
-{
-  
-  color : skyblue;
-}
-.im1
-{
-width : 25%;
-float:left;
-position : center;
-top : 70%;
-Left : 60%;
-transform : translate(40%,15%);
-}
-.im2
-{
 
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
-  font-size: 15px;
-  COLOR : skyblue;
- transform : translate(12%,180%);
-
-}
-.im3
-{
-
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
-  font-size: 25px;
-  color:rgb(57, 57, 100);
- transform : translate(12%,70%);
-
-}
-.im4
-{
-
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
-  font-size: 15px;
- transform : translate(12%,10%);
-
-}
-.im5
-{
-
-  font-family: Arial, Helvetica, sans-serif;
-
-  font-size: 15px;
- transform : translate(12%,70%);
+.homepagetitle {
+    padding: 0 7rem;
+    color: navy;
 
 }
 
-.nav
-{
-width:100%;
-height: 6rem;
-line-height:2rem;
-padding : 0px 2rem;
-/*position: fixed;*/
-background-image: linear-gradient(rgb(4, 4, 32),rgb(4, 4, 32)) ; 
+.h22 {
+
+    color: skyblue;
 }
-.logo p{
-  font-size :30px;
-  font-weight: bold;
-  float: left;
-  color: rgb(255, 251, 251);
-  text-transform:upercase;
-  letter-spacing: 1.5 px;
-  background-image: linear-gradient(rgb(4, 4, 32),rgb(4, 4, 32)) ; 
-  cursor:pointer;
+
+.im1 {
+    width: 25%;
+    float: left;
+    position: center;
+    top: 70%;
+    Left: 60%;
+    transform: translate(40%, 15%);
+}
+
+.im2 {
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    COLOR: skyblue;
+    transform: translate(12%, 180%);
 
 }
-.nav a
-{
-  float : RIGHT;
-  display : inline-block;
-  list-style: none;
-  font-size: 18 px;
-  text-transform: uppercase;
-  padding: 2rem 1.5rem;
-  color : white;
-  text-decoration : none;
+
+.im3 {
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 25px;
+    color: rgb(57, 57, 100);
+    transform: translate(12%, 70%);
+
+}
+
+.im4 {
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    transform: translate(12%, 10%);
+
+}
+
+.im5 {
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 15px;
+    transform: translate(12%, 70%);
+
+}
+
+.nav {
+    width: 100%;
+    height: 6rem;
+    line-height: 2rem;
+    padding: 0 2rem;
+    /*position: fixed;*/
+    background-image: linear-gradient(rgb(4, 4, 32), rgb(4, 4, 32));
+}
+
+.logo p {
+    font-size: 30px;
+    font-weight: bold;
+    float: left;
+    color: rgb(255, 251, 251);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    background-image: linear-gradient(rgb(4, 4, 32), rgb(4, 4, 32));
+    cursor: pointer;
+
+}
+
+.nav a {
+    float: RIGHT;
+    display: inline-block;
+    list-style: none;
+    font-size: 18px;
+    text-transform: uppercase;
+    padding: 2rem 1.5rem;
+    color: white;
+    text-decoration: none;
 }
 
 /*
@@ -107,53 +106,52 @@ background-image: linear-gradient(rgb(4, 4, 32),rgb(4, 4, 32)) ;
   color: rgb(255, 255, 255);
   transition : all 0.9s ease 0s;
 }*/
-.page{
-  width: 100%;
-  margin: 0 auto;
-  overflow: hidden;
-  }
-.foot
-{
-  transform : translate(0%,20%);
-width:100%;
-
-height: 20rem;
-line-height:2rem;
-padding : 0px 2rem;
-/*position: fixed;*/
-background-image: linear-gradient(rgb(4, 4, 32),rgb(4, 4, 32)) ; 
+.page {
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
 }
 
-.logo2{
-  font-size :35px;
-  transform : translate(435%,10%);
-  font-weight: bold;
-  float: left;
-  color: rgb(255, 251, 251);
-  text-transform:upercase;
-  letter-spacing: 1.5 px;
-  background-image: linear-gradient(rgb(4, 4, 32),rgb(4, 4, 32)) ; 
-  cursor:pointer;
+.foot {
+    transform: translate(0%, 20%);
+    width: 100%;
 
-}
-.im7
-{
-  font-family: Arial, Helvetica, sans-serif;
-
-  font-size: 15px;
- transform : translate(26%,240%);
- color : white;
-}
-.im8
-{
-  font-family: Arial, Helvetica, sans-serif;
-
-  font-size: 15px;
- transform : translate(23.5%,210%);
- color : skyblue;
+    height: 20rem;
+    line-height: 2rem;
+    padding: 0 2rem;
+    /*position: fixed;*/
+    background-image: linear-gradient(rgb(4, 4, 32), rgb(4, 4, 32));
 }
 
-.imlg
-{
-  overflow : hidden;
+.logo2 {
+    font-size: 35px;
+    transform: translate(435%, 10%);
+    font-weight: bold;
+    float: left;
+    color: rgb(255, 251, 251);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    background-image: linear-gradient(rgb(4, 4, 32), rgb(4, 4, 32));
+    cursor: pointer;
+
+}
+
+.im7 {
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 15px;
+    transform: translate(26%, 240%);
+    color: white;
+}
+
+.im8 {
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 15px;
+    transform: translate(23.5%, 210%);
+    color: skyblue;
+}
+
+.imlg {
+    overflow: hidden;
 }

@@ -1,148 +1,147 @@
-.im1
-{
-  display: flex;
-  width : 100%;
+.im1 {
+    display: flex;
+    width: 100%;
 
-  height : 400;
-  transform : translate(0%,-0.9%);
-  overflow : hidden;
+    height: 400px;
+    transform: translate(0%, -0.9%);
+    overflow: hidden;
 }
-.im2
-{
 
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
-  font-size: 20px;
-  COLOR : skyblue;
- transform : translate(44%,150%);
+.im2 {
 
-}
-.im6
-{
-
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
-  font-size: 16px;
-  COLOR : skyblue;
- transform : translate(44%,540%);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    COLOR: skyblue;
+    transform: translate(44%, 150%);
 
 }
-.im3
-{
 
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
-  font-size: 23px;
-  color:rgb(57, 57, 100);
- transform : translate(38%,105%);
+.im6 {
 
-}
-.im7
-{
-
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
-  font-size: 23px;
-  color:rgb(57, 57, 100);
- transform : translate(44.5%,290%);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    COLOR: skyblue;
+    transform: translate(44%, 540%);
 
 }
-.im4
-{
 
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
-  font-size: 20px;
-  COLOR : skyblue;
- transform : translate(47%,350%);
+.im3 {
 
-}
-.im5
-{
-width : 70%;
-
-height : 10%;
-transform : translate(22%,18%);
-overflow : hidden;
-}
-.im8
-{
-width : 25%;
-
-height : 20%;
-transform : translate(245%,30%);
-overflow : hidden;
-}
-.im10
-{
-
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
-  font-size: 20px;
-  color:black;
- transform : translate(18.5%,-790%);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 23px;
+    color: rgb(57, 57, 100);
+    transform: translate(38%, 105%);
 
 }
-.im11
-{
 
-transform : translate(1780%,-1000%);
+.im7 {
 
-padding : none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 23px;
+    color: rgb(57, 57, 100);
+    transform: translate(44.5%, 290%);
+
 }
-.im13
-{
 
-transform : translate(4100%,-2420%);
-overflow : hidden;
+.im4 {
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    COLOR: skyblue;
+    transform: translate(47%, 350%);
+
 }
-.im12
-{
 
-transform : translate(20%,-960%);
-overflow : hidden;
+.im5 {
+    width: 70%;
+
+    height: 10%;
+    transform: translate(22%, 18%);
+    overflow: hidden;
 }
-.im14
-{
 
-transform : translate(44%,-2040%);
-overflow : hidden;
+.im8 {
+    width: 25%;
+
+    height: 20%;
+    transform: translate(245%, 30%);
+    overflow: hidden;
 }
-.im15
-{
 
-  width : 25%;
+.im10 {
 
-  height : 20%;
-  transform : translate(245%,-140%);
-  overflow : hidden;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    color: black;
+    transform: translate(18.5%, -790%);
+
 }
+
+.im11 {
+
+    transform: translate(1780%, -1000%);
+
+    padding: 0;
+}
+
+.im13 {
+
+    transform: translate(4100%, -2420%);
+    overflow: hidden;
+}
+
+.im12 {
+
+    transform: translate(20%, -960%);
+    overflow: hidden;
+}
+
+.im14 {
+
+    transform: translate(44%, -2040%);
+    overflow: hidden;
+}
+
+.im15 {
+
+    width: 25%;
+
+    height: 20%;
+    transform: translate(245%, -140%);
+    overflow: hidden;
+}
+
 .page-wrap {
-  width: 960px;
-  margin: 0 auto;
-  }
+    width: 960px;
+    margin: 0 auto;
+}
 
-.im19
-{
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
-  font-size: 15px;
-  COLOR : black;
- transform : translate(30%,220%);
+.im19 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    COLOR: black;
+    transform: translate(30%, 220%);
 }
-.im20
-{
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
-  font-size: 15px;
-  COLOR : black;
- transform : translate(37%,220%);
+
+.im20 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    COLOR: black;
+    transform: translate(37%, 220%);
 }
-.im21
-{
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
-  font-size: 15px;
-  COLOR : rgb(57, 57, 100);
- transform : translate(17%,-3800%);
+
+.im21 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    COLOR: rgb(57, 57, 100);
+    transform: translate(17%, -3800%);
 }

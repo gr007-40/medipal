@@ -1,4 +1,4 @@
-import { Box, Typography } from '@mui/material';
+import {Box, Typography} from '@mui/material';
 import Link from './Link';
 
 function Copyright(props) {
@@ -73,18 +73,18 @@ const ResponsiveFooter = () => {
             <Typography
                 variant='caption'
                 align='center'
-                sx={{ color: 'white' }}
+                sx={{color: 'white'}}
             >
                 Leading the way in Medical Execellence, Trusted Care.
             </Typography>
             <Typography
                 variant='caption'
                 align='center'
-                sx={{ color: '#BFD2F8' }}
+                sx={{color: '#BFD2F8'}}
             >
                 For feedback or concerns, please email us at support@medi.pal
             </Typography>
-            <Copyright sx={{ color: 'white', mb: 4 }} />
+            <Copyright sx={{color: 'white', mb: 4}}/>
         </Box>
     );
 };

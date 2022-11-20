@@ -1,5 +1,5 @@
 import DataTypes from 'sequelize';
-import { sequelize } from '.';
+import {sequelize} from '.';
 import Doctor from "./Doctor";
 import Hospital from "./Hospital";
 
@@ -12,7 +12,10 @@ const Schedule = sequelize.define('Schedule', {
         autoIncrement: true,
     },
     day: DataTypes.STRING,
-    hospitalID:{
+    room: DataTypes.INTEGER,
+    from: DataTypes.STRING,
+    to: DataTypes.STRING,
+    hospitalID: {
         type: DataTypes.INTEGER,
         foreignKey: {
             reference: {
@@ -23,7 +26,7 @@ const Schedule = sequelize.define('Schedule', {
             onDelete: 'NO ACTION'
         }
     },
-    doctorID:{
+    doctorID: {
         type: DataTypes.INTEGER,
         foreignKey: {
             reference: {
