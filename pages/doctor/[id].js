@@ -1,25 +1,24 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { Card, CardContent, CardMedia } from '@mui/material';
+import {Card, CardContent, CardMedia} from '@mui/material';
 import Link from '../../components/Link';
-import { postData } from '../../utils';
+import {postData} from '../../utils';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import CssBaseline from '@mui/material/CssBaseline';
-import { DataGrid } from '@mui/x-data-grid';
-import { Typography } from '@mui/material';
+import {DataGrid} from '@mui/x-data-grid';
 
-export async function getServerSideProps({ query }) {
-    const uid = query.id;
-    const doctor = await postData('http://127.0.0.1:3000/api/doctor', {
-        uid: uid,
-    });
-    return { props: { doctor } };
+export async function getServerSideProps(context) {
+    const id = context.req.url.split('/')[2];
+    const doctor = await postData('http://localhost:3000/api/doctor', {
+        id: id,
+    })
+    return {props: {doctor}};
 }
 
-const profile = ({ doctor }) => {
+const profile = ({doctor}) => {
 
     const columns = [
-        { field: 'day', headerName: 'Day', sortable: false, width: 100 },
+        {field: 'day', headerName: 'Day', sortable: false, width: 100},
         {
             field: 'hospital',
             headerName: 'Hospital',
@@ -33,17 +32,17 @@ const profile = ({ doctor }) => {
             sortable: false,
             width: 100,
         },
-        { field: 'from', headerName: 'From', sortable: false, width: 80 },
-        { field: 'to', headerName: 'To', sortable: false, width: 80 },
+        {field: 'from', headerName: 'From', sortable: false, width: 80},
+        {field: 'to', headerName: 'To', sortable: false, width: 80},
     ];
 
     return (
         <Container
             component='main'
             maxWidth='xxl'
-            sx={{ mt: 12, mb: 16 }}
+            sx={{mt: 12, mb: 16}}
         >
-            <CssBaseline />
+            <CssBaseline/>
             <Box
                 align='center'
                 sx={{
@@ -60,14 +59,17 @@ const profile = ({ doctor }) => {
                 >
                     <CardMedia
                         component='img'
-                        image={doctor.profilePicture || '/USER.png'}
+                        image={doctor.profilePicture}
                         alt={doctor.name}
                     />
-                    <CardContent align='center'>
+                    <CardContent
+                        align='center'
+                        sx={{background: '#BFD2F8'}}
+                    >
                         <h2>{doctor.name}</h2>
                         <h3>{doctor.specialization}</h3>
-                        <h4>{(doctor.degrees||[]).join(' | ')}</h4>
-                        <Box sx={{ display: 'flex', flexDirection: 'row' }}>
+                        <h4>{doctor.degrees.join(' | ')}</h4>
+                        <Box sx={{display: 'flex', flexDirection: 'row'}}>
                             {/*<Box
                                 align='left'
                                 sx={{ mt: 1, flexGrow: 1 }}
@@ -92,12 +94,12 @@ const profile = ({ doctor }) => {
                                 </Link>
                             </Box>*/}
                             <Link
-                                href={'/book?doctor_id=' + doctor.userID}
+                                href={'/book'}
                                 Type={'button'}
                                 type='button'
                                 variant='outlined'
                                 align='right'
-                                sx={{ ml: 'auto' }}
+                                sx={{ml: 'auto'}}
                             >
                                 Book Appointment
                             </Link>
@@ -113,15 +115,24 @@ const profile = ({ doctor }) => {
                         mr: 'auto',
                     }}
                 >
-                    <Typography
+                    <Card
                         sx={{
-                            ml: 'auto',
-                            mr: 'auto',
-                            fontSize: '1.5rem',
+                            display: 'flex',
+                            flexDirection: 'row',
+                            height: '15%',
+                            background: '#BFD2F8',
                         }}
                     >
-                        Schedule
-                    </Typography>
+                        <CardContent
+                            sx={{
+                                ml: 'auto',
+                                mr: 'auto',
+                                fontSize: '1.5rem',
+                            }}
+                        >
+                            Schedule
+                        </CardContent>
+                    </Card>
                     <Card
                         sx={{
                             alignItems: 'center',
@@ -135,6 +146,7 @@ const profile = ({ doctor }) => {
                             hideFooter={true}
                             pageSize={7}
                             rowsPerPageOptions={[7]}
+                            sx={{background: '#BFD2F8'}}
                         />
                     </Card>
                 </Box>

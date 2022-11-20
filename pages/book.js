@@ -1,52 +1,24 @@
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import {Button, Card, CardContent, CardMedia} from '@mui/material';
+import {Button} from '@mui/material';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
-import Image from 'mui-image';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
+import styles from '../styles/Homepage.module.css';
 import styles1 from '../styles/Home.module.css';
-import styles from '../styles/Home.module.css';
-import {postData} from '../utils';
+import Image from 'mui-image';
 
-export async function getServerSideProps({req, query}) {
-    const user = await postData('http://127.0.0.1:3000/api/verify', {
-        token: req.cookies.token,
-    });
-    let patient;
-    if (await user.isVerified) {
-        patient = await postData('http://127.0.0.1:3000/api/patient', {
-            id: user.id,
-        });
-        console.log(await patient);
-    } else {
-        console.log(user);
-        patient = user;
-    }
-    const doctor = await postData('http://127.0.0.1:3000/api/doctor', {
-        uid: query.doctor_id,
-    });
-    return {props: {patient, doctor}};
-}
-
-export default function book({patient, doctor}) {
+export default function book() {
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
-        const date = new Date(data.get('date').toString());
-        const today = new Date();
-        if (date < today) {
-            console.log('you can not book an appointment for the past');
-        } else {
-            postData('/api/appointment', {
-                patient: patient,
-                doctor: doctor,
-                date: date,
-            }).then((message) => {
-                console.log(message)
-            });
-        }
+        console.log({
+            name: data.get('name'),
+            gender: data.get('gender'),
+            phone: data.get('phone'),
+            date: data.get('date'),
+        });
     };
 
     return (
@@ -103,41 +75,51 @@ export default function book({patient, doctor}) {
                         >
                             BOOK AN APPOINTMENT
                         </Typography>
-                        <Card
-                            sx={{
-                                width: '40ch',
-                                align: 'center',
-                                mx: 'auto',
-                            }}
-                        >
-                            <CardMedia
-                                component='img'
-                                image={doctor.profilePicture || '/USER.png'}
-                                alt={doctor.name}
-                            />
-                            <CardContent align='center'>
-                                <h2>{doctor.name}</h2>
-                                <h3>{doctor.specialization}</h3>
-                                <h4>{(doctor.degrees || []).join(' | ')}</h4>
-                            </CardContent>
-                        </Card>
                         <Box
                             component='form'
                             noValidate
                             onSubmit={handleSubmit}
-                            sx={{
-                                mt: 1,
-                                display: 'flex',
-                                flexDirection: 'column',
-                            }}
+                            sx={{mt: 1}}
                         >
+                            <TextField
+                                margin='normal'
+                                required
+                                fullWidth
+                                id='name'
+                                label='Name'
+                                name='name'
+                                autoComplete='name'
+                                autoFocus
+                            />
+                            <TextField
+                                margin='normal'
+                                required
+                                fullWidth
+                                id='gender'
+                                label='Gender'
+                                name='gender'
+                                autoComplete='gender'
+                                autoFocus
+                            />
+                            <TextField
+                                margin='normal'
+                                required
+                                fullWidth
+                                id='phone'
+                                label='Phone'
+                                name='phone'
+                                autoComplete='phone'
+                                autoFocus
+                            />
+
                             <TextField
                                 margin='normal'
                                 required
                                 id='date'
                                 label='Date'
-                                name='date'
+                                //name="date"
                                 type='date'
+                                sx={{width: 220}}
                                 InputLabelProps={{
                                     shrink: true,
                                 }}
@@ -145,8 +127,9 @@ export default function book({patient, doctor}) {
 
                             <Button
                                 type='submit'
-                                variant='outlined'
-                                sx={{ml: 'auto'}}
+                                fullWidth
+                                variant='contained'
+                                sx={{mt: 3, mb: 2}}
                             >
                                 Confirm appointment
                             </Button>
