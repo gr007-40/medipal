@@ -24,11 +24,7 @@ export default function logIn() {
             password: data.get('password'),
         };
 
-        const session = await postData('/api/login', user_credentials).then(
-            (session) => {
-                return session;
-            }
-        );
+        const session = await postData('/api/login', user_credentials);
         if (await session.success) {
             console.log('login successfull');
             postData('/api/verify', {}).then((user) => {

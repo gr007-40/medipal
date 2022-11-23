@@ -1,8 +1,8 @@
 import DataTypes from 'sequelize';
-import {sequelize} from '.';
-import Doctor from "./Doctor";
-import Hospital from "./Hospital";
-import User from "./User";
+import { sequelize } from '.';
+import Doctor from './Doctor';
+import Hospital from './Hospital';
+import User from './User';
 
 sequelize.sync();
 
@@ -12,40 +12,40 @@ const Appointment = sequelize.define('Appointment', {
         primaryKey: true,
         autoIncrement: true,
     },
-    day: DataTypes.STRING,
+    date: DataTypes.DATE,
     hospitalID: {
+        type: DataTypes.INTEGER,
         foreignKey: {
-            type: DataTypes.INTEGER,
             reference: {
                 key: 'id',
-                model: Hospital
+                model: Hospital,
             },
             allowNull: true,
-            onDelete: 'NO ACTION'
-        }
+            onDelete: 'NO ACTION',
+        },
     },
     doctorID: {
+        type: DataTypes.INTEGER,
         foreignKey: {
-            type: DataTypes.INTEGER,
             reference: {
                 key: 'id',
-                model: Doctor
+                model: Doctor,
             },
             allowNull: false,
             onDelete: 'NO ACTION',
-        }
+        },
     },
     userID: {
         type: DataTypes.INTEGER,
         foreignKey: {
             reference: {
                 key: 'id',
-                model: User
+                model: User,
             },
             allowNull: false,
-            onDelete: 'NO ACTION'
-        }
-    }
+            onDelete: 'NO ACTION',
+        },
+    },
 });
 
 export default Appointment;

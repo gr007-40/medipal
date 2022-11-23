@@ -7,6 +7,7 @@ import {setCookie} from "cookies-next";
 export default async function handler(req, res) {
     const user = await User.findOne({where: {email: req.body.email}})
         .then((user) => {
+            console.log(user);
             return user.dataValues;
         })
         .catch((error) => {

@@ -1,61 +1,39 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import {Card, CardContent, CardMedia} from "@mui/material";
-import {useRouter} from "next/router";
-import {postData} from "../../utils";
-import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
-import CssBaseline from "@mui/material/CssBaseline";
-import {DataGrid} from "@mui/x-data-grid";
+import { Card, CardContent, CardMedia } from '@mui/material';
+import { postData } from '../../utils';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import CssBaseline from '@mui/material/CssBaseline';
+import { DataGrid } from '@mui/x-data-grid';
 
-const profile = () => {
-    const router = useRouter();
-    const id = router.query.id;
-    if (id) {
-        postData("/api/patient").then((patient) => {
-            console.log(patient);
+export async function getServerSideProps(context) {
+    const user = await postData('http://localhost:3000/api/verify', {
+        token: context.req.cookies.token,
+    });
+    let patient;
+    if (await user.isVerified) {
+        patient = await postData('http://localhost:3000/api/patient', {
+            id: await user.id,
         });
+    } else {
+        patient = user;
     }
-    const patient = {
-        id: 12,
-        name: "Kafi Hasan",
-        age: 22,
-        gender: "Male",
-        blood: "B+",
+    return { props: { patient } };
+}
 
-        profilePicture: "/USER.png",
-
-        schedule: [
-            {
-                id: new Date("10/30/2022").toDateString(),
-                /*id : document.write(formatDate(d)),*/
-
-                hospital: "Square Hospital",
-                doctor: "Dr.Max",
-            },
-            {
-                id: new Date("11/12/2022").toDateString(),
-                hospital: "LABAID",
-                doctor: "Dr.Sam",
-            },
-            {
-                id: new Date("12/12/2022").toDateString(),
-                hospital: "United",
-                doctor: "Dr.May",
-            },
-        ],
-    };
+const profile = ({ patient }) => {
 
     const columns = [
-        {field: "id", headerName: "Date", sortable: false, width: 150},
+        { field: 'day', headerName: 'Day', sortable: false, width: 150 },
         {
-            field: "hospital",
-            headerName: "Hospital",
+            field: 'hospital',
+            headerName: 'Hospital',
             sortable: false,
             width: 200,
         },
         {
-            field: "doctor",
-            headerName: "Doctor",
+            field: 'doctor',
+            headerName: 'Doctor',
             /* type: 'number',*/
             sortable: false,
             width: 100,
@@ -63,61 +41,69 @@ const profile = () => {
     ];
 
     return (
-        <Container component="main" maxWidth="xxl" sx={{mt: 12, mb: 16}}>
-            <CssBaseline/>
+        <Container
+            component='main'
+            maxWidth='xxl'
+            sx={{ mt: 12, mb: 16 }}
+        >
+            <CssBaseline />
             <Box
-                align="center"
+                align='center'
                 sx={{
-                    display: "flex",
-                    flexDirection: "row",
+                    display: 'flex',
+                    flexDirection: 'row',
                 }}
             >
                 <Card
                     sx={{
                         /*for the profile*/
-                        width: "30ch",
-                        align: "center",
-                        ml: "auto",
+                        width: '30ch',
+                        align: 'center',
+                        ml: 'auto',
                     }}
                 >
                     <CardMedia
-                        component="img"
-                        image={patient.profilePicture}
+                        component='img'
+                        image={patient.profilePicture || '/USER.png'}
                         /*alt={patient.name}*/
                     />
-                    <CardContent align="center" sx={{background: "#BFD2F8"}}>
+                    <CardContent
+                        align='center'
+                    >
                         <h3>{patient.name}</h3>
                         <h4>Age : {patient.age} years</h4>
                         <h4>Gender : {patient.gender} </h4>
                         <h4>Blood Group : {patient.blood} </h4>
-                        <Box sx={{display: "flex", flexDirection: "row"}}>
-                            <Box align="left" sx={{mt: 1, flexGrow: 1}}></Box>
+                        <Box sx={{ display: 'flex', flexDirection: 'row' }}>
+                            <Box
+                                align='left'
+                                sx={{ mt: 1, flexGrow: 1 }}
+                            ></Box>
                         </Box>
                     </CardContent>
                 </Card>
                 <Box
                     sx={{
                         /*schedule*/
-                        display: "flex",
-                        flexDirection: "column",
-                        width: "50ch",
+                        display: 'flex',
+                        flexDirection: 'column',
+                        width: '50ch',
                         ml: 10,
-                        mr: "auto",
+                        mr: 'auto',
                     }}
                 >
                     <Card
                         sx={{
-                            /*for the text*/ display: "flex",
-                            flexDirection: "row",
-                            height: "15%",
-                            background: "#BFD2F8",
+                            /*for the text*/ display: 'flex',
+                            flexDirection: 'row',
+                            height: '15%',
                         }}
                     >
                         <CardContent
                             sx={{
-                                ml: "auto",
-                                mr: "auto",
-                                fontSize: "1.3rem",
+                                ml: 'auto',
+                                mr: 'auto',
+                                fontSize: '1.3rem',
                             }}
                         >
                             Upcoming Appointment
@@ -126,18 +112,17 @@ const profile = () => {
                     <Card
                         sx={{
                             /*fixing the height of the lower card*/
-                            alignItems: "center",
-                            height: "100%",
+                            alignItems: 'center',
+                            height: '100%',
                             mt: 2,
                         }}
                     >
                         <DataGrid
-                            rows={patient.schedule}
+                            rows={patient.appointments}
                             columns={columns}
                             hideFooter={true}
                             pageSize={7}
                             rowsPerPageOptions={[7]}
-                            sx={{background: "#BFD2F8"}}
                         />
                     </Card>
                 </Box>
