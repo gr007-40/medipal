@@ -1,5 +1,5 @@
 import DataTypes from 'sequelize';
-import {sequelize} from '.';
+import { sequelize } from '.';
 import Doctor from './Doctor';
 import Hospital from './Hospital';
 import User from './User';

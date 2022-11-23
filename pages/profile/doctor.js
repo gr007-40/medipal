@@ -71,28 +71,22 @@ export default function Doctor({doctor}) {
     console.log(doctor);
     const [specOpen, setSpecOpen] = React.useState(false);
     const [degOpen, setDegOpen] = React.useState(false);
-
-    function handleSpecOpen() {
+    function handleSpecOpen(){
         setSpecOpen(true);
     }
-
     function handleSpecClose() {
         setSpecOpen(false);
     }
-
-    function handleDegOpen() {
+    function handleDegOpen(){
         setDegOpen(true);
     }
-
     function handleDegClose() {
         setDegOpen(false);
     }
-
-    function addSpecialization() {
+    function addSpecialization(){
 
     }
-
-    function addDegrees() {
+    function addDegrees(){
 
     }
 
@@ -150,8 +144,7 @@ export default function Doctor({doctor}) {
                                         <DialogTitle>Specialization</DialogTitle>
                                         <DialogContent>
                                             <DialogContentText>
-                                                Please enter your field of specialization to help others know what you
-                                                are good at.
+                                                Please enter your field of specialization to help others know what you are good at.
                                             </DialogContentText>
                                             <TextField
                                                 autoFocus
@@ -173,7 +166,7 @@ export default function Doctor({doctor}) {
                         <h4>
                             {doctor.degrees.join(' | ')}{" "}
                             <div>
-                                <Button
+                                    <Button
                                     type={'button'}
                                     variant={'outlined'}
                                     align={'right'}
