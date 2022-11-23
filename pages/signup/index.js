@@ -56,8 +56,7 @@ export default function SignUp() {
 
         postData("/api/signup", user).then((status) => {
             console.log(status);
-            Router.push("/profile").then(_ => {
-            });
+            Router.push("/profile").then(_ => {});
         });
     };
 
