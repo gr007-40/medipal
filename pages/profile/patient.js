@@ -1,30 +1,34 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { Card, CardContent, CardMedia } from '@mui/material';
-import { postData } from '../../utils';
+import {Card, CardContent, CardMedia} from '@mui/material';
+import {postData} from '../../utils';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import CssBaseline from '@mui/material/CssBaseline';
-import { DataGrid } from '@mui/x-data-grid';
+import {DataGrid} from '@mui/x-data-grid';
 
-export async function getServerSideProps(context) {
-    const user = await postData('http://localhost:3000/api/verify', {
-        token: context.req.cookies.token,
+export async function getServerSideProps({req, res}) {
+    res.setHeader(
+        'Cache-Control',
+        'public, s-maxage=10, stale-while-revalidate=59'
+    )
+    const user = await postData('http://127.0.0.1:3000/api/verify', {
+        token: req.cookies.token,
     });
     let patient;
     if (await user.isVerified) {
-        patient = await postData('http://localhost:3000/api/patient', {
+        patient = await postData('http://127.0.0.1:3000/api/patient', {
             id: await user.id,
         });
     } else {
         patient = user;
     }
-    return { props: { patient } };
+    return {props: {patient}};
 }
 
-const profile = ({ patient }) => {
+const profile = ({patient}) => {
 
     const columns = [
-        { field: 'day', headerName: 'Day', sortable: false, width: 150 },
+        {field: 'day', headerName: 'Day', sortable: false, width: 150},
         {
             field: 'hospital',
             headerName: 'Hospital',
@@ -44,9 +48,9 @@ const profile = ({ patient }) => {
         <Container
             component='main'
             maxWidth='xxl'
-            sx={{ mt: 12, mb: 16 }}
+            sx={{mt: 12, mb: 16}}
         >
-            <CssBaseline />
+            <CssBaseline/>
             <Box
                 align='center'
                 sx={{
@@ -74,10 +78,10 @@ const profile = ({ patient }) => {
                         <h4>Age : {patient.age} years</h4>
                         <h4>Gender : {patient.gender} </h4>
                         <h4>Blood Group : {patient.blood} </h4>
-                        <Box sx={{ display: 'flex', flexDirection: 'row' }}>
+                        <Box sx={{display: 'flex', flexDirection: 'row'}}>
                             <Box
                                 align='left'
-                                sx={{ mt: 1, flexGrow: 1 }}
+                                sx={{mt: 1, flexGrow: 1}}
                             ></Box>
                         </Box>
                     </CardContent>

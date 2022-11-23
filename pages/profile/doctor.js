@@ -9,13 +9,17 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import *  as React from "react";
 
-export async function getServerSideProps(context) {
-    const user = await postData('http://localhost:3000/api/verify', {
-        token: context.req.cookies.token,
+export async function getServerSideProps({req,res}) {
+    res.setHeader(
+        'Cache-Control',
+        'public, s-maxage=10, stale-while-revalidate=59'
+    )
+    const user = await postData('http://127.0.0.1:3000/api/verify', {
+        token: req.cookies.token,
     });
     let doctor;
     if (await user.isVerified && await user.isDoctor) {
-        doctor = await postData('http://localhost:3000/api/doctor', {
+        doctor = await postData('http://127.0.0.1:3000/api/doctor', {
             uid: user.id,
         })
     } else {

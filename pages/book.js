@@ -1,6 +1,6 @@
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import { Button } from '@mui/material';
+import {Button, Card, CardContent, CardMedia} from '@mui/material';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Image from 'mui-image';
@@ -8,16 +8,15 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import styles1 from '../styles/Home.module.css';
 import styles from '../styles/Home.module.css';
-import { postData } from '../utils';
-import { Card, CardContent, CardMedia } from '@mui/material';
+import {postData} from '../utils';
 
-export async function getServerSideProps({ req, query }) {
-    const user = await postData('http://localhost:3000/api/verify', {
+export async function getServerSideProps({req, query}) {
+    const user = await postData('http://127.0.0.1:3000/api/verify', {
         token: req.cookies.token,
     });
     let patient;
     if (await user.isVerified) {
-        patient = await postData('http://localhost:3000/api/patient', {
+        patient = await postData('http://127.0.0.1:3000/api/patient', {
             id: user.id,
         });
         console.log(await patient);
@@ -25,13 +24,13 @@ export async function getServerSideProps({ req, query }) {
         console.log(user);
         patient = user;
     }
-    const doctor = await postData('http://localhost:3000/api/doctor', {
+    const doctor = await postData('http://127.0.0.1:3000/api/doctor', {
         uid: query.doctor_id,
     });
-    return { props: { patient, doctor } };
+    return {props: {patient, doctor}};
 }
 
-export default function book({ patient, doctor }) {
+export default function book({patient, doctor}) {
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
@@ -44,7 +43,9 @@ export default function book({ patient, doctor }) {
                 patient: patient,
                 doctor: doctor,
                 date: date,
-            }).then((message)=>{console.log(message)});
+            }).then((message) => {
+                console.log(message)
+            });
         }
     };
 
@@ -53,9 +54,9 @@ export default function book({ patient, doctor }) {
             <Grid
                 container
                 component='main'
-                sx={{ height: '100vh' }}
+                sx={{height: '100vh'}}
             >
-                <CssBaseline />
+                <CssBaseline/>
                 <Grid
                     item
                     xs={false}
@@ -98,7 +99,7 @@ export default function book({ patient, doctor }) {
                         <Typography
                             component='h1'
                             variant='h5'
-                            sx={{ fontWeight: 'bold' }}
+                            sx={{fontWeight: 'bold'}}
                         >
                             BOOK AN APPOINTMENT
                         </Typography>
@@ -117,7 +118,7 @@ export default function book({ patient, doctor }) {
                             <CardContent align='center'>
                                 <h2>{doctor.name}</h2>
                                 <h3>{doctor.specialization}</h3>
-                                <h4>{(doctor.degrees||[]).join(' | ')}</h4>
+                                <h4>{(doctor.degrees || []).join(' | ')}</h4>
                             </CardContent>
                         </Card>
                         <Box
@@ -145,7 +146,7 @@ export default function book({ patient, doctor }) {
                             <Button
                                 type='submit'
                                 variant='outlined'
-                                sx={{ ml: 'auto' }}
+                                sx={{ml: 'auto'}}
                             >
                                 Confirm appointment
                             </Button>
