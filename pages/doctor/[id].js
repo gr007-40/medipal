@@ -9,7 +9,7 @@ import {DataGrid} from '@mui/x-data-grid';
 
 export async function getServerSideProps({query}) {
     const uid = query.id;
-    const doctor = await postData('http://localhost:3000/api/doctor', {
+    const doctor = await postData('http://127.0.0.1:3000/api/doctor', {
         uid: uid,
     });
     return {props: {doctor}};

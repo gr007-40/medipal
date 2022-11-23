@@ -11,12 +11,12 @@ export async function getServerSideProps({req, res}) {
         'Cache-Control',
         'public, s-maxage=10, stale-while-revalidate=59'
     )
-    const user = await postData('http://localhost:3000/api/verify', {
+    const user = await postData('http://127.0.0.1:3000/api/verify', {
         token: req.cookies.token,
     });
     let patient;
     if (await user.isVerified) {
-        patient = await postData('http://localhost:3000/api/patient', {
+        patient = await postData('http://127.0.0.1:3000/api/patient', {
             id: await user.id,
         });
     } else {
