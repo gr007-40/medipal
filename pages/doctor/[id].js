@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import {Card, CardContent, CardMedia} from '@mui/material';
+import {Card, CardContent, CardMedia, Typography} from '@mui/material';
 import Link from '../../components/Link';
 import {postData} from '../../utils';
 import Box from '@mui/material/Box';
@@ -7,11 +7,11 @@ import Container from '@mui/material/Container';
 import CssBaseline from '@mui/material/CssBaseline';
 import {DataGrid} from '@mui/x-data-grid';
 
-export async function getServerSideProps(context) {
-    const id = context.req.url.split('/')[2];
+export async function getServerSideProps({query}) {
+    const uid = query.id;
     const doctor = await postData('http://localhost:3000/api/doctor', {
-        id: id,
-    })
+        uid: uid,
+    });
     return {props: {doctor}};
 }
 
@@ -59,16 +59,13 @@ const profile = ({doctor}) => {
                 >
                     <CardMedia
                         component='img'
-                        image={doctor.profilePicture}
+                        image={doctor.profilePicture || '/USER.png'}
                         alt={doctor.name}
                     />
-                    <CardContent
-                        align='center'
-                        sx={{background: '#BFD2F8'}}
-                    >
+                    <CardContent align='center'>
                         <h2>{doctor.name}</h2>
                         <h3>{doctor.specialization}</h3>
-                        <h4>{doctor.degrees.join(' | ')}</h4>
+                        <h4>{(doctor.degrees || []).join(' | ')}</h4>
                         <Box sx={{display: 'flex', flexDirection: 'row'}}>
                             {/*<Box
                                 align='left'
@@ -94,7 +91,7 @@ const profile = ({doctor}) => {
                                 </Link>
                             </Box>*/}
                             <Link
-                                href={'/book'}
+                                href={'/book?doctor_id=' + doctor.userID}
                                 Type={'button'}
                                 type='button'
                                 variant='outlined'
@@ -115,24 +112,15 @@ const profile = ({doctor}) => {
                         mr: 'auto',
                     }}
                 >
-                    <Card
+                    <Typography
                         sx={{
-                            display: 'flex',
-                            flexDirection: 'row',
-                            height: '15%',
-                            background: '#BFD2F8',
+                            ml: 'auto',
+                            mr: 'auto',
+                            fontSize: '1.5rem',
                         }}
                     >
-                        <CardContent
-                            sx={{
-                                ml: 'auto',
-                                mr: 'auto',
-                                fontSize: '1.5rem',
-                            }}
-                        >
-                            Schedule
-                        </CardContent>
-                    </Card>
+                        Schedule
+                    </Typography>
                     <Card
                         sx={{
                             alignItems: 'center',
@@ -146,7 +134,6 @@ const profile = ({doctor}) => {
                             hideFooter={true}
                             pageSize={7}
                             rowsPerPageOptions={[7]}
-                            sx={{background: '#BFD2F8'}}
                         />
                     </Card>
                 </Box>

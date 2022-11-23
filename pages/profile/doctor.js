@@ -1,7 +1,13 @@
-import {Box, Card, CardContent, CardMedia, Container, Typography} from '@mui/material';
+import {Box, Button, Card, CardContent, CardMedia, Container, Typography} from '@mui/material';
 import {DataGrid} from '@mui/x-data-grid';
 import {postData} from '../../utils';
-import Link from '../../components/Link'
+import TextField from '@mui/material/TextField';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import *  as React from "react";
 
 export async function getServerSideProps(context) {
     const user = await postData('http://localhost:3000/api/verify', {
@@ -10,7 +16,7 @@ export async function getServerSideProps(context) {
     let doctor;
     if (await user.isVerified && await user.isDoctor) {
         doctor = await postData('http://localhost:3000/api/doctor', {
-            id: user.id,
+            uid: user.id,
         })
     } else {
         doctor = user;
@@ -59,6 +65,37 @@ export default function Doctor({doctor}) {
         },
     ];
     console.log(doctor);
+    const [specOpen, setSpecOpen] = React.useState(false);
+    const [degOpen, setDegOpen] = React.useState(false);
+
+    function handleSpecOpen() {
+        setSpecOpen(true);
+    }
+
+    function handleSpecClose() {
+        setSpecOpen(false);
+    }
+
+    function handleDegOpen() {
+        setDegOpen(true);
+    }
+
+    function handleDegClose() {
+        setDegOpen(false);
+    }
+
+    function addSpecialization() {
+
+    }
+
+    function addDegrees() {
+
+    }
+
+    function handleScheduleUpdate() {
+
+    }
+
     return (
         <Container
             component='main'
@@ -87,38 +124,80 @@ export default function Doctor({doctor}) {
 
                     <CardContent
                         align='center'
-                        sx={{background: '#BFD2F8'}}
                     >
                         {!doctor.profilePicture ?
-                            <Link
+                            <Button
                                 type={'button'}
-                                Type={'button'}
                                 variant={'outlined'}
-                                href={'#'}
                                 align={'center'}
-                            >upload profile picture</Link> : <></>}
+                            >upload profile picture</Button> : <></>}
                         <h2>{doctor.name}</h2>
                         <h3>
                             {
                                 doctor.specialization ||
-                                <Link
-                                    href={'#'}
-                                    Type={'button'}
-                                    type={'button'}
-                                    variant={'outlined'}
-                                    align={'center'}
-                                >Add specialization</Link>}
+                                <div>
+                                    <Button
+                                        type={'button'}
+                                        variant={'outlined'}
+                                        align={'center'}
+                                        onClick={handleSpecOpen}
+                                    >Add specialization</Button>
+                                    <Dialog open={specOpen} onClose={handleSpecClose}>
+                                        <DialogTitle>Specialization</DialogTitle>
+                                        <DialogContent>
+                                            <DialogContentText>
+                                                Please enter your field of specialization to help others know what you
+                                                are good at.
+                                            </DialogContentText>
+                                            <TextField
+                                                autoFocus
+                                                margin="dense"
+                                                id="specialization"
+                                                label="Specialization"
+                                                type="text"
+                                                fullWidth
+                                                variant="standard"
+                                            />
+                                        </DialogContent>
+                                        <DialogActions>
+                                            <Button variant={'outlined'} onClick={handleSpecClose}>Cancel</Button>
+                                            <Button variant={'outlined'} onClick={addSpecialization}>Submit</Button>
+                                        </DialogActions>
+                                    </Dialog>
+                                </div>}
                         </h3>
                         <h4>
                             {doctor.degrees.join(' | ')}{" "}
-                            <Link
-                                href={'#'}
-                                Type={'button'}
-                                type={'button'}
-                                variant={'outlined'}
-                                align={'right'}
-                                sx={{ml: 'auto'}}
-                            >Add Degrees</Link>
+                            <div>
+                                <Button
+                                    type={'button'}
+                                    variant={'outlined'}
+                                    align={'right'}
+                                    sx={{ml: 'auto'}}
+                                    onClick={handleDegOpen}
+                                >Add Degrees</Button>
+                                <Dialog open={degOpen} onClose={handleDegClose}>
+                                    <DialogTitle>Degree</DialogTitle>
+                                    <DialogContent>
+                                        <DialogContentText>
+                                            Add your degrees i.e. MBBS, FCPS, ..etc
+                                        </DialogContentText>
+                                        <TextField
+                                            autoFocus
+                                            margin="dense"
+                                            id="degree"
+                                            label="degree"
+                                            type="text"
+                                            fullWidth
+                                            variant="standard"
+                                        />
+                                    </DialogContent>
+                                    <DialogActions>
+                                        <Button variant={'outlined'} onClick={handleDegClose}>Cancel</Button>
+                                        <Button variant={'outlined'} onClick={addDegrees}>Submit</Button>
+                                    </DialogActions>
+                                </Dialog>
+                            </div>
                         </h4>
                         {/* <Box sx={{ display: "flex", flexDirection: "row" }}>
               <Box align="left" sx={{ mt: 1, flexGrow: 1 }}>
@@ -167,18 +246,16 @@ export default function Doctor({doctor}) {
                             hideFooter={true}
                             pageSize={7}
                             rowsPerPageOptions={[7]}
-                            sx={{background: '#BFD2F8'}}
                         />
-                        <Link
-                            href={'#'}
-                            type={'button'}
-                            Type={'button'}
-                            varint={'outlined'}
-                            align={'center'}
-                        >
-                            Update schedule
-                        </Link>
                     </Card>
+                    <Button
+                        type={'button'}
+                        varint={'outlined'}
+                        align={'center'}
+                        onClick={handleScheduleUpdate}
+                    >
+                        Update schedule
+                    </Button>
                 </Box>
             </Box>
         </Container>

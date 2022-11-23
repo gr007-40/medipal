@@ -3,15 +3,15 @@ import Degree from '../../Models/Degree'
 import Schedule from '../../Models/Schedule';
 
 export default async function handler(req, res) {
-    const uid = req.body.id;
+    const uid = req.body.uid;
     const doctor = await Doctor.findOne({
         where: {userID: uid},
     }).then((doctor) => {
-        return doctor.dataValues;
-    }).catch((error) => {
-        console.error(error);
-        res.status(405).json({message: "invalid doctor id"});
-
+        if (doctor)
+            return doctor.dataValues;
+        else {
+            res.status(500).json({found: false})
+        }
     });
     const schedule = await Schedule.findAll({
         where: {doctorID: await doctor.id},
@@ -34,6 +34,7 @@ export default async function handler(req, res) {
         name: await doctor.name,
         specialization: await doctor.specialization,
         profilePicture: await doctor.profilePicture,
+        userID: await doctor.userID,
         degrees: degree,
         schedule: schedule,
     });
