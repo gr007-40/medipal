@@ -17,7 +17,7 @@ export default async function handler(req, res) {
                 return j.dataValues;
             });
             const hospital = await Doctor.findByPk(i.dataValues.hospitalID).then(j => {
-                return j ? j.dataValues : null;
+                return j?j.dataValues:null;
             }).catch(err => {
                 console.log(err);
                 return null;
@@ -28,6 +28,7 @@ export default async function handler(req, res) {
                 hospital: await hospital?await hospital.name : '',
                 doctor: await doctor.name
             })
+            // arr.push(i.dataValues);
         }
         console.log(arr);
         return arr;
