@@ -19,7 +19,7 @@ export default function services({services}) {
             <Container sx={{py: 8}} maxWidth="md">
                 <Grid container spacing={3}>
                     {(services || []).map((service) => (
-                        <Grid item key={ser} xs={12} sm={6} md={4}>
+                        <Grid item key={service} xs={12} sm={6} md={4}>
                             <Card
                                 sx={{width: '30ch', display: 'flex', flexDirection: 'column', border: '1'}}
                             >

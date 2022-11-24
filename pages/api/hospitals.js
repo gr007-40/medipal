@@ -9,7 +9,7 @@ export default async function handler(req, res) {
             });
             return arr;
         });
-        res.status(200).json({hospitals: hospitals});
+        res.status(200).json(hospitals);
     } catch (error) {
         res.status(500).json({error: error.message});
     }

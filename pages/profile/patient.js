@@ -75,7 +75,7 @@ const profile = ({patient}) => {
                         <h3>{patient.name}</h3>
                         <h4>Age : {patient.age} years</h4>
                         <h4>Gender : {patient.gender} </h4>
-                        <h4>Blood Group : {patient.blood} </h4>
+                        <h4>Blood Group : {patient.bloodGroup} </h4>
                         <Box sx={{display: 'flex', flexDirection: 'row'}}>
                             <Box
                                 align='left'

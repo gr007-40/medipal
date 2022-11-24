@@ -71,7 +71,7 @@ export default function About() {
                                     <Typography variant={'h6'} align={'center'}
                                                 sx={{color: '#000080', fontFamily: 'Raleway'}} paragraph gutterBottom>OUR
                                         VISION</Typography>
-                                    <Typography variant={'h6'} align={'center'}
+                                    <Typography variant={'h8'} align={'center'}
                                                 sx={{color: '#000000', fontFamily: 'Raleway'}} paragraph gutterBottom>Smarter
                                         healthcare that is easily accessible to everyone & cheaper healthcare via price
                                         transparency across all healthcare services.</Typography>
@@ -89,7 +89,7 @@ export default function About() {
                                     <Typography variant={'h6'} align={'center'}
                                                 sx={{color: '#000080', fontFamily: 'Raleway'}} paragraph gutterBottom>OUR
                                         MISSION </Typography>
-                                    <Typography variant={'h6'} align={'center'}
+                                    <Typography variant={'h8'} align={'center'}
                                                 sx={{color: '#000000', fontFamily: 'Raleway'}} paragraph gutterBottom>To
                                         enable quality, affordable healthcare for everyone, everywhere.</Typography>
                                 </Box>
@@ -105,7 +105,7 @@ export default function About() {
                                     <Typography variant={'h6'} align={'center'}
                                                 sx={{color: '#000080', fontFamily: 'Raleway'}} paragraph
                                                 gutterBottom>GOAL </Typography>
-                                    <Typography variant={'h6'} align={'center'}
+                                    <Typography variant={'h8'} align={'center'}
                                                 sx={{color: '#000000', fontFamily: 'Raleway'}} paragraph gutterBottom>To
                                         enable quality, affordable healthcare for everyone, everywhere.</Typography>
                                 </Box>

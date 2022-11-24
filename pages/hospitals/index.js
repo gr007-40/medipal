@@ -20,6 +20,7 @@ export async function getServerSideProps() {
 }
 
 export default function hospitals({hospitals}) {
+    console.log(hospitals);
     return (
         <main>
             <Head>

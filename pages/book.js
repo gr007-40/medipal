@@ -11,7 +11,7 @@ import styles from '../styles/Home.module.css';
 import {postData} from '../utils';
 
 export async function getServerSideProps({req, query}) {
-    const user = await postData('http://'+process.env.HOST+':'+'/api/verify', {
+    const user = await postData('http://'+process.env.HOST+':'+process.env.PORT+'/api/verify', {
         token: req.cookies.token,
     });
     let patient;

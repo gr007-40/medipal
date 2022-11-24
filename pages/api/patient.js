@@ -38,7 +38,7 @@ export default async function handler(req, res) {
         name: await user.name,
         age: await user.age,
         gender: await user.gender,
-        blood: await user.blood,
+        bloodGroup: await user.bloodGroup,
         profilePicture: await user.profilePicture,
         appointments: appointments,
     });
