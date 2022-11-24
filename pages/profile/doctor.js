@@ -9,13 +9,17 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import *  as React from "react";
 
-export async function getServerSideProps(context) {
-    const user = await postData('http://localhost:3000/api/verify', {
-        token: context.req.cookies.token,
+export async function getServerSideProps({req, res}) {
+    res.setHeader(
+        'Cache-Control',
+        'public, s-maxage=10, stale-while-revalidate=59'
+    )
+    const user = await postData('http://' + process.env.HOST + ':' + process.env.PORT + '/api/verify', {
+        token: req.cookies.token,
     });
     let doctor;
     if (await user.isVerified && await user.isDoctor) {
-        doctor = await postData('http://localhost:3000/api/doctor', {
+        doctor = await postData('http://' + process.env.HOST + ':' + process.env.PORT + '/api/doctor', {
             uid: user.id,
         })
     } else {
@@ -67,22 +71,28 @@ export default function Doctor({doctor}) {
     console.log(doctor);
     const [specOpen, setSpecOpen] = React.useState(false);
     const [degOpen, setDegOpen] = React.useState(false);
-    function handleSpecOpen(){
+
+    function handleSpecOpen() {
         setSpecOpen(true);
     }
+
     function handleSpecClose() {
         setSpecOpen(false);
     }
-    function handleDegOpen(){
+
+    function handleDegOpen() {
         setDegOpen(true);
     }
+
     function handleDegClose() {
         setDegOpen(false);
     }
-    function addSpecialization(){
+
+    function addSpecialization() {
 
     }
-    function addDegrees(){
+
+    function addDegrees() {
 
     }
 
@@ -128,7 +138,7 @@ export default function Doctor({doctor}) {
                         <h2>{doctor.name}</h2>
                         <h3>
                             {
-                                doctor.specialization ||
+                                doctor.speciality ||
                                 <div>
                                     <Button
                                         type={'button'}
@@ -140,7 +150,8 @@ export default function Doctor({doctor}) {
                                         <DialogTitle>Specialization</DialogTitle>
                                         <DialogContent>
                                             <DialogContentText>
-                                                Please enter your field of specialization to help others know what you are good at.
+                                                Please enter your field of specialization to help others know what you
+                                                are good at.
                                             </DialogContentText>
                                             <TextField
                                                 autoFocus
@@ -162,7 +173,7 @@ export default function Doctor({doctor}) {
                         <h4>
                             {doctor.degrees.join(' | ')}{" "}
                             <div>
-                                    <Button
+                                <Button
                                     type={'button'}
                                     variant={'outlined'}
                                     align={'right'}

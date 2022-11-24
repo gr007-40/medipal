@@ -3,13 +3,13 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import {postData} from "../utils";
 
-export async function getServerSideProps({res}){
+export async function getServerSideProps({res}) {
     res.setHeader(
         'Cache-Control',
         'public, s-maxage=10, stale-while-revalidate=59'
     )
-   const url = 'http://'+process.env.HOST+':'+process.env.PORT+'/api/services';
-   const services = await postData(url);
+    const url = 'http://' + process.env.HOST + ':' + process.env.PORT + '/api/services';
+    const services = await postData(url);
     return {props: {services}};
 }
 
@@ -25,7 +25,7 @@ export default function services({services}) {
                             >
                                 <CardMedia
                                     component="img"
-                                    image={service.image||"/labaid.png"}
+                                    image={service.image || "/labaid.png"}
                                     style={{width: "280px", height: "280px", margin: "auto"}}
 
                                     alt={service.name}

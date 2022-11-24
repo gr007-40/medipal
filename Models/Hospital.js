@@ -11,7 +11,9 @@ const Hospital = sequelize.define("Hospital", {
     },
     name: DataTypes.STRING,
     image: DataTypes.STRING,
-    address: DataTypes.STRING
+    address: DataTypes.STRING,
+    description: DataTypes.TEXT,
+    link: DataTypes.STRING
 });
 
 export default Hospital;

@@ -1,4 +1,3 @@
-import Dcotor from '../../Models/Doctor';
 import {sequelize} from '../../Models';
 
 export default async function handler(req, res) {

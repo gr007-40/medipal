@@ -7,10 +7,10 @@ export default async function handler(req, res) {
     const doctor = await Doctor.findOne({
         where: {userID: uid},
     }).then((doctor) => {
-        if(doctor)
-        return doctor.dataValues;
+        if (doctor)
+            return doctor.dataValues;
         else {
-            res.status(500).json({found:false})
+            res.status(500).json({found: false})
         }
     });
     const schedule = await Schedule.findAll({
@@ -32,7 +32,7 @@ export default async function handler(req, res) {
     res.status(200).json({
         id: await doctor.id,
         name: await doctor.name,
-        specialization: await doctor.specialization,
+        speciality: await doctor.speciality,
         profilePicture: await doctor.profilePicture,
         userID: await doctor.userID,
         degrees: degree,
