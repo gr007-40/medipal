@@ -1,12 +1,5 @@
 import DataTypes from 'sequelize';
-import Sequelize from 'sequelize';
-
-const sequelize = new Sequelize('medipal', 'root', 'MariaDB', {
-    host: '127.0.0.1',
-    port: 3306,
-    dialect: "mariadb",
-    operatorsAliases: false
-});
+import sequelize from '.';
 
 sequelize.sync();
 

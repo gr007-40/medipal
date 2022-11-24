@@ -1,9 +1,8 @@
-//add a record of user to the users table in database
 import User from "../../Models/User";
 import bcrypt from "bcrypt";
 import {signJWT} from "../../utils";
 import {setCookie} from "cookies-next";
-//send successfull signup message to the frontend along with the user id and a jwt token with expiry date
+
 export default async function handler(req, res) {
     const user = await User.findOne({where: {email: req.body.email}})
         .then((user) => {

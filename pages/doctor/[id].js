@@ -1,25 +1,27 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-import { Card, CardContent, CardMedia } from '@mui/material';
+import {Card, CardContent, CardMedia, Typography} from '@mui/material';
 import Link from '../../components/Link';
-import { postData } from '../../utils';
+import {postData} from '../../utils';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import CssBaseline from '@mui/material/CssBaseline';
-import { DataGrid } from '@mui/x-data-grid';
-import { Typography } from '@mui/material';
+import {DataGrid} from '@mui/x-data-grid';
 
-export async function getServerSideProps({ query }) {
+export async function getServerSideProps({query}) {
+    res.setHeader(
+        'Cache-Control',
+        'public, s-maxage=10, stale-while-revalidate=59'
+    )
     const uid = query.id;
-    const doctor = await postData('http://127.0.0.1:3000/api/doctor', {
+    const doctor = await postData('http://'+process.env.HOST+':'+process.env.PORT, {
         uid: uid,
     });
-    return { props: { doctor } };
+    return {props: {doctor}};
 }
 
-const profile = ({ doctor }) => {
+const profile = ({doctor}) => {
 
     const columns = [
-        { field: 'day', headerName: 'Day', sortable: false, width: 100 },
+        {field: 'day', headerName: 'Day', sortable: false, width: 100},
         {
             field: 'hospital',
             headerName: 'Hospital',
@@ -33,17 +35,17 @@ const profile = ({ doctor }) => {
             sortable: false,
             width: 100,
         },
-        { field: 'from', headerName: 'From', sortable: false, width: 80 },
-        { field: 'to', headerName: 'To', sortable: false, width: 80 },
+        {field: 'from', headerName: 'From', sortable: false, width: 80},
+        {field: 'to', headerName: 'To', sortable: false, width: 80},
     ];
 
     return (
         <Container
             component='main'
             maxWidth='xxl'
-            sx={{ mt: 12, mb: 16 }}
+            sx={{mt: 12, mb: 16}}
         >
-            <CssBaseline />
+            <CssBaseline/>
             <Box
                 align='center'
                 sx={{
@@ -66,8 +68,8 @@ const profile = ({ doctor }) => {
                     <CardContent align='center'>
                         <h2>{doctor.name}</h2>
                         <h3>{doctor.specialization}</h3>
-                        <h4>{(doctor.degrees||[]).join(' | ')}</h4>
-                        <Box sx={{ display: 'flex', flexDirection: 'row' }}>
+                        <h4>{(doctor.degrees || []).join(' | ')}</h4>
+                        <Box sx={{display: 'flex', flexDirection: 'row'}}>
                             {/*<Box
                                 align='left'
                                 sx={{ mt: 1, flexGrow: 1 }}
@@ -97,7 +99,7 @@ const profile = ({ doctor }) => {
                                 type='button'
                                 variant='outlined'
                                 align='right'
-                                sx={{ ml: 'auto' }}
+                                sx={{ml: 'auto'}}
                             >
                                 Book Appointment
                             </Link>

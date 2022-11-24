@@ -2,14 +2,14 @@ import User from '../../Models/User';
 import Appointment from '../../Models/Appointment';
 import Doctor from '../../Models/Doctor'
 
-const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 
 export default async function handler(req, res) {
     const user = await User.findByPk(req.body.id).then((user) => {
         return user.dataValues;
     });
     const appointments = await Appointment.findAll({
-        where: { userID: user.id },
+        where: {userID: user.id},
     }).then(async (appointments) => {
         const arr = [];
         for (const i of appointments) {
@@ -17,7 +17,7 @@ export default async function handler(req, res) {
                 return j.dataValues;
             });
             const hospital = await Doctor.findByPk(i.dataValues.hospitalID).then(j => {
-                return j?j.dataValues:null;
+                return j ? j.dataValues : null;
             }).catch(err => {
                 console.log(err);
                 return null;
@@ -25,10 +25,9 @@ export default async function handler(req, res) {
             arr.push({
                 id: i.dataValues.id,
                 day: days[i.dataValues.date.getDay()],
-                hospital: await hospital?await hospital.name : '',
+                hospital: await hospital ? await hospital.name : '',
                 doctor: await doctor.name
             })
-            // arr.push(i.dataValues);
         }
         console.log(arr);
         return arr;

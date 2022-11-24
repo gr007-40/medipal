@@ -11,12 +11,12 @@ export async function getServerSideProps({req, res}) {
         'Cache-Control',
         'public, s-maxage=10, stale-while-revalidate=59'
     )
-    const user = await postData('http://127.0.0.1:3000/api/verify', {
+    const user = await postData('http://'+process.env.HOST+':'+process.env.PORT+'/api/verify', {
         token: req.cookies.token,
     });
     let patient;
     if (await user.isVerified) {
-        patient = await postData('http://127.0.0.1:3000/api/patient', {
+        patient = await postData('http://'+process.env.HOST+':'+process.env.PORT+'/api/patient', {
             id: await user.id,
         });
     } else {
@@ -38,7 +38,6 @@ const profile = ({patient}) => {
         {
             field: 'doctor',
             headerName: 'Doctor',
-            /* type: 'number',*/
             sortable: false,
             width: 100,
         },
@@ -69,7 +68,6 @@ const profile = ({patient}) => {
                     <CardMedia
                         component='img'
                         image={patient.profilePicture || '/USER.png'}
-                        /*alt={patient.name}*/
                     />
                     <CardContent
                         align='center'
@@ -88,7 +86,6 @@ const profile = ({patient}) => {
                 </Card>
                 <Box
                     sx={{
-                        /*schedule*/
                         display: 'flex',
                         flexDirection: 'column',
                         width: '50ch',
@@ -98,7 +95,7 @@ const profile = ({patient}) => {
                 >
                     <Card
                         sx={{
-                            /*for the text*/ display: 'flex',
+                            display: 'flex',
                             flexDirection: 'row',
                             height: '15%',
                         }}
@@ -115,7 +112,6 @@ const profile = ({patient}) => {
                     </Card>
                     <Card
                         sx={{
-                            /*fixing the height of the lower card*/
                             alignItems: 'center',
                             height: '100%',
                             mt: 2,

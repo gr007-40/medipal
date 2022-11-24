@@ -1,20 +1,16 @@
 import DataTypes from 'sequelize';
 import {sequelize} from '.';
-import Doctor from "./Doctor";
+import Service from "./Service";
 import Hospital from "./Hospital";
 
 sequelize.sync();
 
-const Schedule = sequelize.define('Schedule', {
+const Lab = sequelize.define('Lab', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
     },
-    day: DataTypes.STRING,
-    room: DataTypes.INTEGER,
-    from: DataTypes.STRING,
-    to: DataTypes.STRING,
     hospitalID: {
         type: DataTypes.INTEGER,
         foreignKey: {
@@ -26,17 +22,17 @@ const Schedule = sequelize.define('Schedule', {
             onDelete: 'CASCADE'
         }
     },
-    doctorID: {
+    serviceID: {
         type: DataTypes.INTEGER,
         foreignKey: {
             reference: {
                 key: 'id',
-                model: Doctor
+                model: Service
             },
             allowNull: false,
-            onDelete: 'CASCADE',
+            onDelete: 'NO ACTION',
         }
     }
 });
 
-export default Schedule;
+export default Lab;

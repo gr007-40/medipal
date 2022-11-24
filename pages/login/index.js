@@ -15,7 +15,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import {postData} from '../../utils';
 
-export default function logIn() {
+export default function Login() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
@@ -162,7 +162,7 @@ export default function logIn() {
                             </Grid>
                             <Grid item>
                                 <Link
-                                    href='#'
+                                    href='/signup'
                                     variant='body2'
                                 >
                                     {"Don't have an account? Sign Up"}
