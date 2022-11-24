@@ -11,7 +11,7 @@ const Doctor = sequelize.define('Doctor', {
         autoIncrement: true,
     },
     name: DataTypes.STRING,
-    specialization: DataTypes.STRING,
+    speciality: DataTypes.STRING,
     profilePicture: DataTypes.STRING,
     userID: {
         type: DataTypes.INTEGER,
