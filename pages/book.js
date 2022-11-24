@@ -11,12 +11,12 @@ import styles from '../styles/Home.module.css';
 import {postData} from '../utils';
 
 export async function getServerSideProps({req, query}) {
-    const user = await postData('http://127.0.0.1:3000/api/verify', {
+    const user = await postData('http://'+process.env.HOST+':'+'/api/verify', {
         token: req.cookies.token,
     });
     let patient;
     if (await user.isVerified) {
-        patient = await postData('http://127.0.0.1:3000/api/patient', {
+        patient = await postData('http://'+process.env.HOST+':'+process.env.PORT+'/api/patient', {
             id: user.id,
         });
         console.log(await patient);
@@ -24,7 +24,7 @@ export async function getServerSideProps({req, query}) {
         console.log(user);
         patient = user;
     }
-    const doctor = await postData('http://127.0.0.1:3000/api/doctor', {
+    const doctor = await postData('http://'+process.env.HOST+':'+process.env.PORT+'/api/doctor', {
         uid: query.doctor_id,
     });
     return {props: {patient, doctor}};
