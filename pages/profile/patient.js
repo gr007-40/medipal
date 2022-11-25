@@ -39,7 +39,7 @@ const profile = ({patient}) => {
             field: 'doctor',
             headerName: 'Doctor',
             sortable: false,
-            width: 100,
+            width: 170,
         },
     ];
 

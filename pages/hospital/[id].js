@@ -60,7 +60,7 @@ export default function details({hospital, doctors}) {
                                     >
                                         <CardMedia
                                             component="img"
-                                            image={"/" + doctor.image}
+                                            image={doctor.profilePicture}
                                             style={{
                                                 width: "280px",
                                                 height: "280px",
@@ -84,7 +84,7 @@ export default function details({hospital, doctors}) {
                                                 {doctor.speciality}
                                             </Typography>
                                             <Typography>
-                                                Please click on `&apos;`View`&apos;` to see profile.
+                                                Please click on &apos;View&apos; to see profile.
                                             </Typography>
                                         </CardContent>
                                         <CardActions>

@@ -2,8 +2,9 @@ import * as React from "react";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import {Card, CardContent, CardMedia} from '@mui/material';
+import {Button, Card, CardContent, CardMedia} from '@mui/material';
 import {postData} from "../../utils";
+import CardActions from "@mui/material/CardActions";
 
 export async function getServerSideProps({res, query}) {
     res.setHeader(
@@ -42,6 +43,11 @@ export default function details({hospitals}) {
                                             {hospital.name}
                                         </Typography>
                                     </CardContent>
+                                    <CardActions>
+                                        <Button id={hospital.id} size="small" href={"/hospital/" + hospital.id}>
+                                            View
+                                        </Button>
+                                    </CardActions>
                                 </Card>
                             </Grid>
                         );

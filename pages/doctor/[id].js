@@ -19,11 +19,10 @@ export async function getServerSideProps({res,query}) {
 }
 
 const profile = ({doctor}) => {
-
     const columns = [
         {field: 'day', headerName: 'Day', sortable: false, width: 100},
         {
-            field: 'hospital',
+            field: 'hospitalID',
             headerName: 'Hospital',
             sortable: false,
             width: 200,

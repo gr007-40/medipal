@@ -1,7 +1,7 @@
 import Appointment from '../../Models/Appointment'
 
 const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-export default function handler(req, res) {
+export default async function handler(req, res) {
     const date = new Date(req.body.date);
     const doctor = req.body.doctor;
     const user = req.body.patient;
@@ -14,7 +14,7 @@ export default function handler(req, res) {
     })
     const hospital_id = schedule.hospitalID;
 
-    Appointment.create({
+    await Appointment.create({
         userID: user.id,
         doctorID: doctor.id,
         date: date,

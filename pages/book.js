@@ -9,6 +9,7 @@ import Typography from '@mui/material/Typography';
 import styles1 from '../styles/Home.module.css';
 import styles from '../styles/Home.module.css';
 import {postData} from '../utils';
+import Link from "../components/Link";
 
 export async function getServerSideProps({req, query}) {
     const user = await postData('http://'+process.env.HOST+':'+process.env.PORT+'/api/verify', {
@@ -144,6 +145,7 @@ export default function book({patient, doctor}) {
                             />
 
                             <Button
+                                // href={'/profile/patient'}
                                 type='submit'
                                 variant='outlined'
                                 sx={{ml: 'auto'}}
