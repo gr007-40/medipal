@@ -52,7 +52,7 @@ export default function hospitals({hospitals}) {
                                             {hospital.name}
                                         </Typography>
                                         <Typography>
-                                            Please click on `&apos;`View`&apos;` to see details.
+                                            Please click on &apos;View&apos; to see details.
                                         </Typography>
                                     </CardContent>
                                     <CardActions>

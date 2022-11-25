@@ -11,11 +11,11 @@ export default async function handler(req, res) {
         return arr;
     })
     const hospitals = [];
-    labs.forEach(lab => {
-        const hospital = Hospital.findByPk(lab.hospitalID).then(i => i.dataValues);
-        hospitals.push(hospital);
-    });
-    res.status(200).json({hospitals: hospitals});
+    for (const lab of labs) {
+        const hospital = await Hospital.findByPk(await lab.hospitalID).then(i => i.dataValues);
+        hospitals.push(await hospital);
+    }
+    res.status(200).json(hospitals);
     // const hospitals = Hospital.findAll({
     //     where:{id: Lab.hospitalID},
     //     include:[{

@@ -25,7 +25,7 @@ export default function details({hospital, doctors}) {
             <main>
                 <Grid item xs={12} md={4}></Grid>
                 <Grid container spacing={5} sx={{mt: 3}}>
-                    <Image src={"/" + hospital.image} alt={hospital.name}/>
+                    <Image src={hospital.image} alt={hospital.name}/>
 
                     <h1>{hospital.name}</h1>
 
