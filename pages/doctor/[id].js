@@ -6,13 +6,13 @@ import Container from '@mui/material/Container';
 import CssBaseline from '@mui/material/CssBaseline';
 import {DataGrid} from '@mui/x-data-grid';
 
-export async function getServerSideProps({res,query}) {
+export async function getServerSideProps({res, query}) {
     res.setHeader(
         'Cache-Control',
         'public, s-maxage=10, stale-while-revalidate=59'
     )
     const uid = query.id;
-    const doctor = await postData('http://' + process.env.HOST + ':' + process.env.PORT+"/api/doctor", {
+    const doctor = await postData('http://' + process.env.HOST + ':' + process.env.PORT + "/api/doctor", {
         uid: uid,
     });
     return {props: {doctor}};

@@ -12,9 +12,9 @@ import CardActions from "@mui/material/CardActions";
 import Link from "../components/Link";
 import {postData} from '../utils';
 
-export async function getServerSideProps(){
-    const doctors = await postData('http://'+process.env.HOST+':' +process.env.PORT+'/api/doctors');
-    return {props:{doctors}};
+export async function getServerSideProps() {
+    const doctors = await postData('http://' + process.env.HOST + ':' + process.env.PORT + '/api/doctors');
+    return {props: {doctors}};
 }
 
 
@@ -47,7 +47,7 @@ export default function Admin({doctors}) {
                                 >
                                     <CardMedia
                                         component="img"
-                                        image={doctor.image||'/USER.png'}
+                                        image={doctor.image || '/USER.png'}
                                         style={{
                                             width: "280px",
                                             height: "280px",
@@ -133,7 +133,7 @@ export default function Admin({doctors}) {
 
                             </DialogContent>
                             <DialogActions>
-                                <Button  onClick={handleClickClose}>ADD</Button>
+                                <Button onClick={handleClickClose}>ADD</Button>
                             </DialogActions>
                         </Dialog>
 
