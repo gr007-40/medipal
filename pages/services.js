@@ -1,4 +1,4 @@
-import {Button, Card, CardActions, CardContent, CardMedia, Grid} from '@mui/material';
+import {Card, CardContent, CardMedia, Grid} from '@mui/material';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import {postData} from "../utils";
@@ -37,12 +37,12 @@ export default function services({services}) {
 
 
                                 </CardContent>
-                                <CardActions>
+                                {/*<CardActions>*/}
 
-                                    <Button id={service.id} size="small"
-                                            href={"./service/" + service.id}>View Hospitals</Button>
+                                {/*    <Button id={service.id} size="small"*/}
+                                {/*            href={"./service/" + service.id}>View Hospitals</Button>*/}
 
-                                </CardActions>
+                                {/*</CardActions>*/}
                             </Card>
                         </Grid>
                     ))}

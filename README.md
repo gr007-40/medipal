@@ -24,9 +24,11 @@ as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of Reac
 
 ## About Medipal
 
-Medipal is a system that provides an overview of different hospitals and doctors enabling a better healthcare experience for everyone.
+Medipal is a system that provides an overview of different hospitals and doctors enabling a better healthcare experience
+for everyone.
 
 ## Features of Medipal :
+
 - View different hospitals connected to Medipal from the Hospitals section.
 - View different services offered by different hospitals and laboratories from the Services section.
 - One can search for doctors,hospitals and services easily through the search bar.
