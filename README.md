@@ -35,7 +35,7 @@ Medipal is a system that provides an overview of different hospitals and doctors
 - Doctors can view their upcoming appointments.
 - Check any doctor's schedule and availability
 - Book appointments.
-- 
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
