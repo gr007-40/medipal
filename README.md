@@ -44,3 +44,7 @@ the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=
 from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Features of Medipal :
+*One can search for doctors,hospitals and services easily through the search bar
+*Each patients and doctors will have their seperate 
