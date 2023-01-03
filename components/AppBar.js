@@ -110,6 +110,7 @@ function ResponsiveAppBar() {
         {url: '/about', name: 'ABOUT'},
         {url: '/services', name: 'SERVICES'},
         {url: '/hospitals', name: 'HOSPITALS'},
+        {url: '/search', name: 'SEARCH'},
     ];
     return (
         <AppBar
