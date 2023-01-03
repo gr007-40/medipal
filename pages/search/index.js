@@ -11,20 +11,21 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import {postData} from "../../utils";
 
 export async function getServerSideProps() {
+    /*for getting the selected hospital*/
     const apiUrlEndpoint = "http://localhost:3000/api/getsearchinfo";
 
-    const resultset = await postData(apiUrlEndpoint);
+    //const response = await postData(apiUrlEndpoint,{})
+    const response = await fetch(apiUrlEndpoint);
 
-    console.log(await resultset);
+    const resultset = await response.json();
+    //console.log(await resdata.hospital_details);
 
-    return {props: {resultset}};
+    return { props: { resultset } };
 }
 
-const searchbar = ({resultset}) => {
-    console.log(resultset)
+const searchbar = ({ resultset }) => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [value, setSearchTerm] = useState("");
 
@@ -34,9 +35,8 @@ const searchbar = ({resultset}) => {
     };
     const handleSubmit = (event) => {
         event.preventDefault();
-        if (value) console.log(value);
-        else
-            Router.reload()
+        // if (!value)
+        //     Router.reload()
     };
 
     return (
@@ -46,7 +46,7 @@ const searchbar = ({resultset}) => {
                 textAlign="center"
                 noValidate
                 onSubmit={handleSubmit}
-                sx={{mt: 1}}
+                sx={{   mt: 1 }}
             >
                 <TextField
                     sx={{
@@ -64,7 +64,7 @@ const searchbar = ({resultset}) => {
                     type="submit"
 
                     variant="contained"
-                    sx={{ml:2, mt: 3, mb: 2}}
+                    sx={{ mt: 3, mb: 2 }}
                     href="#results"
                 >
                     Search
@@ -72,12 +72,11 @@ const searchbar = ({resultset}) => {
             </Box>
 
             <div id="results">
-                <Container sx={{py: 8}} maxWidth="md">
+                <Container sx={{ py: 8 }} maxWidth="md">
                     <Grid container spacing={4}>
                         {(resultset.hospital_list || []).map(function (card) {
-                            if (card.name.toLowerCase().contains(value.toLowerCase())) {
-                                // console.log("if kaaj kore");
-                                // console.log("ebar asholei bhitore" + card.name);
+                            if (value&&(card.name.toLowerCase().includes(value.toLowerCase()))) {
+                                console.log(card)
                                 return (
                                     <Grid item key={card} xs={12} sm={6} md={4}>
                                         <Card
@@ -99,19 +98,20 @@ const searchbar = ({resultset}) => {
                                                 }}
                                                 alt={card.name}
                                             />
-                                            <CardContent sx={{flexGrow: 1}}>
+                                            <CardContent sx={{ flexGrow: 1 }}>
                                                 <Typography gutterBottom variant="h5" component="h2">
                                                     {card.name}
                                                 </Typography>
                                                 <Typography>
+                                                    {/* eslint-disable-next-line react/no-unescaped-entities */}
                                                     Please click on 'View' to see details.
                                                 </Typography>
                                             </CardContent>
                                             <CardActions>
                                                 <Button
-                                                    id={card.hospital_id}
+                                                    id={card.id}
                                                     size="small"
-                                                    href={"./hospitaldetails/" + card.hospital_id}
+                                                    href={"./hospital/" + card.id}
                                                 >
                                                     View
                                                 </Button>
@@ -123,11 +123,10 @@ const searchbar = ({resultset}) => {
                         })}
 
                         {(resultset.doctors || []).map(function (card) {
-                            console.log(value);
-                            console.log(card.Specialty)
+                            // console.log(value);
+                            // console.log(card)
                             if (
-                                card.name.toLowerCase().contains(value.toLowerCase())||
-                                card.speciality.toLowerCase().contains(value.toLowerCase())
+                                value&&(card.name.toLowerCase().includes(value.toLowerCase())||(card.speciality!=null?card.speciality.toLowerCase().includes(value.toLowerCase()):false))
                             ) {
                                 return (
                                     <Grid item key={card} xs={12} sm={6} md={4}>
@@ -142,7 +141,7 @@ const searchbar = ({resultset}) => {
                                             <CardMedia
                                                 component="img"
                                                 //image='square.png'
-                                                image={card.image}
+                                                image={card.profilePicture||'USER.png'}
                                                 style={{
                                                     width: "250px",
                                                     height: "300px",
@@ -150,22 +149,23 @@ const searchbar = ({resultset}) => {
                                                 }}
                                                 alt={card.name}
                                             />
-                                            <CardContent sx={{flexGrow: 1}}>
+                                            <CardContent sx={{ flexGrow: 1 }}>
                                                 <Typography gutterBottom variant="h5" component="h2">
                                                     {card.name}
                                                 </Typography>
-                                                <Typography gutterBottom variant="h6" component="h4">
-                                                    {card.hospital_name}
-                                                </Typography>
+                                                {/*<Typography gutterBottom variant="h6" component="h4">*/}
+                                                {/*    {card.name}*/}
+                                                {/*</Typography>*/}
                                                 <Typography>
+                                                    {/* eslint-disable-next-line react/no-unescaped-entities */}
                                                     Please click on 'View' to see details.
                                                 </Typography>
                                             </CardContent>
                                             <CardActions>
                                                 <Button
-                                                    id={card.hospital_id}
+                                                    id={card.id}
                                                     size="small"
-                                                    href={"./hospitaldetails/" + card.hospital_id}
+                                                    href={"./doctor/" + card.id}
                                                 >
                                                     View
                                                 </Button>

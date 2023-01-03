@@ -1,21 +1,26 @@
-import Hospital from "../../Models/Hospital";
-import Doctor from "../../Models/Doctor";
+import mariadb from "mariadb/promise";
 
-export default async function handler(req, res) {
-    const hospitals = Hospital.findAll().then(hospitals => {
-        const arr = [];
-        hospitals.forEach(hospital => {
-            arr.push(hospital);
-        })
-        return arr;
-    })
-    const doctors = Doctor.findAll().then(doctors => {
-        const arr = [];
-        doctors.forEach(doctor => {
-            arr.push(doctor);
-        })
-        return arr;
-    })
+const Sequelize=require("sequelize");
 
-    res.status(200).json({hospitals: hospitals, doctors: doctors})
+// const sequelize= new Sequelize('medipal','root','MariaDB',{host:'127.0.0.1',port:3306,dialect:"mariadb"});
+const sequelize= new Sequelize(process.env.DATABASE_URL);
+export default async function handler(req,res){
+    try {
+
+
+        const query = await sequelize.query(
+            "select * from Hospitals",);
+        const query2 = await sequelize.query(
+            "select * from Doctors",);
+        res.status(200).json({hospital_list:await query[0],doctors:await query2[0]});
+        //success();
+
+    }
+    catch (error) {
+
+        // unhide to check error
+        res.status(500).json({ error: error.message });
+        // }
+    }
 }
+
